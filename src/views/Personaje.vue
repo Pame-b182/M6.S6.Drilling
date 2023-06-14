@@ -24,7 +24,13 @@
 import axios from 'axios'
 export default {
   name: "personaje-component",
-  // props: {},
+  props: {
+    //Se pasa a través de props el Id, para realizar el router dinámico
+    id: {
+      type: String,
+      required: true,
+    }
+  },
   data: function () {
     return {
         personaje:{
@@ -37,11 +43,12 @@ export default {
         }
     };
   },
-  computed: {
-    id(){
-        return this.$route.params.id;
-    }
-  },
+  //Esta forma de enrutar produce un acople, por lo que se utilizará props
+  // computed: {
+  //   id(){
+  //       return this.$route.params.id;
+  //   }
+  // },
   methods: {
     getPersonaje(){
         //${this.id}: viene de computed
